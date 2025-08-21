@@ -66,6 +66,8 @@ group :test do
   gem "selenium-webdriver"
 end
 
+gem "rails_12factor", group: :production # logs/servir assets
+
 gem "tailwindcss-rails", "~> 4.3"
 
 gem "devise", "~> 4.9"
@@ -73,3 +75,7 @@ gem "devise", "~> 4.9"
 # markdown gems
 gem "kramdown"
 gem "kramdown-parser-gfm"
+
+# Gemfile
+gem "cloudinary", "~> 1.26"
+gem "activestorage-cloudinary-service", "~> 0.2.0"
