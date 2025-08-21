@@ -1,0 +1,43 @@
+<%= form_with(model: @web_project, class: "space-y-6 max-w-xl", html: { multipart: true }) do |f| %>
+  <%= render "shared/errors", object: @web_project %>
+
+  <!-- Título -->
+  <div>
+    <%= f.label :title, class: "block text-sm font-medium text-gray-700" %>
+    <%= f.text_field :title,
+          class: field_classes(@web_project,
+                 "mt-1 block w-full rounded-md border-gray-300 focus:ring-2 focus:ring-indigo-500",
+                 :title) %>
+    <%= field_error_text(@web_project, :title) %>
+  </div>
+
+  <!-- Descripción -->
+  <div>
+    <%= f.label :description, class: "block text-sm font-medium text-gray-700" %>
+    <%= f.text_area :description, rows: 5,
+          class: field_classes(@web_project,
+                 "mt-1 block w-full rounded-md border-gray-300 focus:ring-2 focus:ring-indigo-500",
+                 :description) %>
+    <%= field_error_text(@web_project, :description) %>
+  </div>
+
+  <!-- Imagen -->
+  <div>
+    <%= f.label :image, "Imagen del Proyecto", class: "block text-sm font-medium text-gray-700" %>
+    <%= f.file_field :image,
+          class: "mt-1 block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4
+                 file:rounded-md file:border-0 file:text-sm file:font-semibold
+                 file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100" %>
+
+    <% if @web_project.image.attached? %>
+      <div class="mt-3">
+        <p class="text-xs text-gray-500">Imagen actual:</p>
+        <%= image_tag @web_project.image.variant(resize_to_limit: [200, 120]), class: "rounded-lg border" %>
+      </div>
+    <% end %>
+  </div>
+
+  <!-- Botón -->
+  <%= f.submit "Guardar",
+        class: "px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700" %>
+<% end %>

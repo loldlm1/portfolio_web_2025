@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.12",
+    "tailwindcss": "^4.1.12"
+  },
+  "name": "portafolio_web_2025",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Moises <loldlm1@gmail.com>",
+  "license": "MIT"
+}

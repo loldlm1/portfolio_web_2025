@@ -1,0 +1,36 @@
+<div class="mx-auto p-6"><!-- sin max-w-5xl para usar todo el ancho del main -->
+  <div class="flex items-center justify-between mb-6">
+    <h1 class="text-2xl font-bold">Proyectos</h1>
+    <% if user_signed_in? %>
+      <%= link_to "Nuevo", new_web_project_path, class: "px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700" %>
+    <% end %>
+  </div>
+
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <% @web_projects.each do |p| %>
+      <div class="rounded-2xl border shadow-sm bg-white overflow-hidden">
+        <!-- Card clicable (va al show) -->
+        <%= link_to web_project_path(p), class: "block hover:shadow-md hover:-translate-y-0.5 transition focus:outline-none focus:ring-2 focus:ring-indigo-500" do %>
+          <% if p.image.attached? %>
+            <%= image_tag p.image.variant(resize_to_fill: [600, 360]), class: "w-full h-48 object-cover" %>
+          <% end %>
+          <div class="p-4">
+            <h2 class="font-semibold text-lg"><%= p.title %></h2>
+            <p class="text-sm text-gray-600"><%= truncate(strip_tags(md(p.description)), length: 160) %></p>
+          </div>
+        <% end %>
+
+        <!-- Acciones admin (fuera del link) -->
+        <% if user_signed_in? %>
+          <div class="px-4 pb-4 -mt-2 flex gap-3">
+            <%= link_to "Editar", edit_web_project_path(p), class: "text-gray-600 hover:underline" %>
+            <%= link_to "Eliminar", p,
+                  data: { turbo_method: :delete, turbo_confirm: "¿Eliminar?" },
+                  class: "text-red-600 hover:underline" %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+</div>

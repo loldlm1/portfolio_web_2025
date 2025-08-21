@@ -1,0 +1,13 @@
+<%# Espera: locals: { object: } donde object es un ActiveModel con .errors %>
+<% if object && object.errors.any? %>
+  <div class="mb-6 rounded-lg border border-red-200 bg-red-50 p-4">
+    <h3 class="mb-2 font-semibold text-red-700">
+      <%= pluralize(object.errors.count, "error") %> impidieron guardar
+    </h3>
+    <ul class="list-disc list-inside text-sm text-red-700">
+      <% object.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
