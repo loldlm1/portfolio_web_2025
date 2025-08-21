@@ -33,7 +33,24 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 .envrc
-.envrc
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+# -------------------------------
+# NUEVO: agregar cosas faltantes
+# -------------------------------
+
+# Node modules
+/node_modules/
+
+# Coverage reports
+/coverage/
+/spec/examples.txt
+
+# OS / editor clutter
+.DS_Store
+yarn-error.log
+
+# Archivos accidentales
+/bar
