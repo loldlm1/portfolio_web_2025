@@ -77,5 +77,5 @@ gem "kramdown"
 gem "kramdown-parser-gfm"
 
 # Gemfile
-gem "cloudinary", "~> 1.26"
+gem "cloudinary", "~> 2.3"
 gem "activestorage-cloudinary-service", "~> 0.2.0"
